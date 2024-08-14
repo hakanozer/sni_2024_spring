@@ -1,16 +1,53 @@
 package com.works.overview.restcontrollers;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import com.works.overview.entities.Customer;
+import com.works.overview.services.CustomerService;
+import com.works.overview.utils.Util;
+
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
 
 
 @RestController
+@RequestMapping("customer")
+@RequiredArgsConstructor
 public class CustomerRestController {
     
+    final CustomerService customerService;
 
-    @GetMapping("single")
-    public String single() {
-        return "Ali Bilmem";
+    @GetMapping("findById/{id}/{catName}")
+    public ResponseEntity findById(@PathVariable int id, @PathVariable String catName) {
+        return Util.ok(id);
+    }
+
+
+    @GetMapping("search")
+    public ResponseEntity search(
+        @RequestParam(defaultValue = "") String name,
+        @RequestParam(defaultValue = "") String surname,
+        @RequestParam(defaultValue = "") String email
+        ) {
+            System.out.println(name);
+            System.out.println(surname);
+            System.out.println(email);
+            return Util.ok(name);
+    }
+
+
+    @PostMapping("register")
+    public ResponseEntity customerRegister(@RequestBody Customer customer) {        
+        return customerService.register(customer);
     }
     
 
