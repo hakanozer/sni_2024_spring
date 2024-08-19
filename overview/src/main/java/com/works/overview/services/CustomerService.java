@@ -67,7 +67,7 @@ public class CustomerService {
         }
         // select * from customer
         Pageable pageable = PageRequest.of(page, controlSize);
-        Page<Customer> cusPage = customerRepository.findByNameContainsOrSurnameContains(q, q, pageable);
+        Page<Customer> cusPage = customerRepository.findByNameContainsOrSurnameContainsAllIgnoreCase(q, q, pageable);
         return Util.ok(cusPage);
     }
 

@@ -14,5 +14,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     // select * from customer where email = ? and password = ?
     Optional<Customer> findByEmailEqualsAndPasswordEquals(String email, String password);
     // select * from customer where name like '%?%' 
-    Page<Customer> findByNameContainsOrSurnameContains(String name, String surname, Pageable pageable);
+    Page<Customer> findByNameContainsOrSurnameContainsAllIgnoreCase(String name, String surname, Pageable pageable);
 }
