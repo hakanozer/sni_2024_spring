@@ -49,6 +49,28 @@ public class CustomerRestController {
     public ResponseEntity customerRegister(@RequestBody Customer customer) {        
         return customerService.register(customer);
     }
+
+    @PostMapping("login")
+    public ResponseEntity postMethodName(@RequestBody Customer customer) {        
+        return customerService.login(customer);
+    }
+
+    @GetMapping("list")
+    public ResponseEntity list(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "5") int size
+    ) {
+        return customerService.findAll(page, size);
+    }
+
+    @GetMapping("searchCustomer")
+    public ResponseEntity getMethodName(
+        @RequestParam(defaultValue = "") String q,
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "5") int size
+    ) {
+        return customerService.search(q, page, size);
+    }
     
 
 
