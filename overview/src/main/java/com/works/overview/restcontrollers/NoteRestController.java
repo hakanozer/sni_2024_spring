@@ -3,8 +3,9 @@ package com.works.overview.restcontrollers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.works.overview.entities.Note;
 import com.works.overview.entities.Product;
-import com.works.overview.services.ProductService;
+import com.works.overview.services.NoteService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,21 +18,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("product")
-public class ProductRestController {
+@RequestMapping("note")
+public class NoteRestController {
 
-    final ProductService productService;
+    final NoteService noteService;
 
     @PostMapping("save")
-    public ResponseEntity save(@RequestBody Product product) {        
-        return productService.save(product);
+    public ResponseEntity save(@RequestBody Note note) {        
+        return noteService.save(note);
     }
 
     @GetMapping("list")
     public ResponseEntity list() {
-        return productService.list();
+        return noteService.list();
     }
-    
-    
     
 }
