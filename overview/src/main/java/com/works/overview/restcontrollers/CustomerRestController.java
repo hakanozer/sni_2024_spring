@@ -6,6 +6,7 @@ import com.works.overview.entities.Customer;
 import com.works.overview.services.CustomerService;
 import com.works.overview.utils.Util;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-
 
 
 @RestController
@@ -46,7 +45,7 @@ public class CustomerRestController {
 
 
     @PostMapping("register")
-    public ResponseEntity customerRegister(@RequestBody Customer customer) {        
+    public ResponseEntity customerRegister(@Valid @RequestBody Customer customer) {        
         return customerService.register(customer);
     }
 
