@@ -33,7 +33,7 @@ public class Customer {
     @NotEmpty
     @NotNull
     @Size(min = 6, max = 100)
-    @Email
+    @Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}", flags = Pattern.Flag.CASE_INSENSITIVE)
     @Column(unique = true)
     private String email;
 
