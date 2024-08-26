@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.works.overview.entities.Note;
-import com.works.overview.entities.Product;
 import com.works.overview.services.NoteService;
 
 import lombok.RequiredArgsConstructor;

@@ -5,9 +5,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.works.overview.entities.Product;
 import com.works.overview.services.ProductService;
+import com.works.overview.utils.Util;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ProductRestController {
 
     final ProductService productService;
+    final HttpServletRequest req;
 
     @PostMapping("save")
     public ResponseEntity save(@RequestBody Product product) {        

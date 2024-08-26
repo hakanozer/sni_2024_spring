@@ -50,7 +50,7 @@ public class CustomerRestController {
     }
 
     @PostMapping("login")
-    public ResponseEntity postMethodName(@RequestBody Customer customer) {        
+    public ResponseEntity login(@RequestBody Customer customer) {        
         return customerService.login(customer);
     }
 

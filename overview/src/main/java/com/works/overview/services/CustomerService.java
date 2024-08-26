@@ -13,6 +13,7 @@ import com.works.overview.entities.Customer;
 import com.works.overview.repositories.CustomerRepository;
 import com.works.overview.utils.Util;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 
 
@@ -21,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class CustomerService {
     
     final CustomerRepository customerRepository;
+    final HttpServletRequest req;
 
     public ResponseEntity register( Customer customer ) {
         // sql -> insert
@@ -44,6 +46,7 @@ public class CustomerService {
         Optional<Customer> optCustomer = customerRepository.findByEmailEqualsAndPasswordEquals(customer.getEmail(), customer.getPassword());
         if (optCustomer.isPresent()) {
             Customer dbCustomer = optCustomer.get();
+            req.getSession().setAttribute("user", dbCustomer);
             return Util.ok(dbCustomer);
         }
         return Util.fail("Email or Password Fail", HttpStatus.UNAUTHORIZED);
