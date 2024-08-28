@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 
 import com.works.overview.entities.Customer;
 import com.works.overview.entities.Info;
@@ -21,7 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
-@Configuration
+//@Configuration
 @RequiredArgsConstructor
 public class GlobalFilter implements Filter {
 
