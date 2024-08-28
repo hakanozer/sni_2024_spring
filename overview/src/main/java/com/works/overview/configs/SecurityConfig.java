@@ -21,3 +21,9 @@ public class SecurityConfig {
 
     
 }
+
+/*
+ * ali -> product
+ * veli -> note
+ * zehra -> product, note
+ */
