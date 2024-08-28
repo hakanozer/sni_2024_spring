@@ -10,6 +10,9 @@ import com.works.overview.entities.Admin;
 import com.works.overview.services.AdminService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("admin")
@@ -24,6 +27,12 @@ public class AdminRestController {
         System.out.println(admin);
         return adminService.save(admin);
     }
+
+    @GetMapping("list")
+    public ResponseEntity list() {
+        return adminService.list();
+    }
+    
     
     
 }
