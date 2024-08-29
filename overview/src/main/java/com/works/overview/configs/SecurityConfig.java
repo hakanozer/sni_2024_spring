@@ -30,6 +30,7 @@ public class SecurityConfig {
             auth
             .requestMatchers("/customer/**").permitAll()
             .requestMatchers("/role/**").permitAll()
+            .requestMatchers("/info/**").permitAll()
             .requestMatchers("/product/**").hasRole("product")
             .requestMatchers("/note/**").hasRole("note")
         )

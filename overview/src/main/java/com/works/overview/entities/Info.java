@@ -20,6 +20,7 @@ public class Info {
     private String ip;
     private String sessionid;
     private String useragent;
+    private String roles = "";
 
     
 }
