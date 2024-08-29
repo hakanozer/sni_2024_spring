@@ -1,17 +1,20 @@
 package com.works.overview.services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.works.overview.entities.Admin;
 import com.works.overview.entities.Role;
@@ -22,6 +25,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AdminService implements UserDetailsService {
 
     final AdminRepository adminRepository;
@@ -46,7 +50,11 @@ public class AdminService implements UserDetailsService {
     }
 
     private Collection<? extends GrantedAuthority> parseRole(List<Role> roles) {
-        throw new UnsupportedOperationException("Unimplemented method 'parseRole'");
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        for (Role role : roles) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return grantedAuthorities;
     }
 
     public ResponseEntity save( Admin admin ) {
