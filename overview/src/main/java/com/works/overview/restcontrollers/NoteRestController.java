@@ -4,9 +4,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.works.overview.entities.Note;
+import com.works.overview.redisModels.NoteRedis;
 import com.works.overview.services.NoteService;
 
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +31,7 @@ public class NoteRestController {
     }
 
     @GetMapping("list")
-    public ResponseEntity list() {
+    public List<NoteRedis> list() {
         return noteService.list();
     }
     
