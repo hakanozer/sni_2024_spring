@@ -19,6 +19,11 @@ public class ProductConsumer {
     @Transactional
     @RabbitListener(queues = "queuename")
     public void handleMessage( ModelProduct product ) {
+        try {
+            Thread.sleep(5000);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         Product pro = new Product();
         pro.setTitle(product.getTitle());
         pro.setPrice(product.getPrice());
