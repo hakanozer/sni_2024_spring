@@ -5,6 +5,9 @@ import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.DefaultClassMapper;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RabbitMQConfig {
 
-    final RabbitTemplate rabbitTemplate;
+    //final RabbitTemplate rabbitTemplate;
 
     @Value("${sr.rabbit.queue.name}")
     private String queueName;
@@ -25,6 +28,11 @@ public class RabbitMQConfig {
 
     @Value("${sp.rabbit.exchange.name}")
     private String exchangeName;
+
+    @Bean
+    public Jackson2JsonMessageConverter converter() {
+        return new Jackson2JsonMessageConverter();
+    }
 
     @Bean
     public Queue queue() {

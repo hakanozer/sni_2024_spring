@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.works.overview.entities.Product;
+import com.works.overview.models.ModelProduct;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +21,7 @@ public class ProductProducer {
     @Value("${sp.rabbit.exchange.name}")
     private String exchangeName;
 
-    public void sendToQueue(Product product) {
+    public void sendToQueue(ModelProduct product) {
         System.out.println("sendToQueue Product: " + product);
         rabbitTemplate.convertAndSend(exchangeName, routingName, product);
     }

@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.works.overview.entities.Product;
+import com.works.overview.models.ModelProduct;
 import com.works.overview.services.ProductService;
 import com.works.overview.utils.Util;
 
@@ -27,7 +28,7 @@ public class ProductRestController {
     final HttpServletRequest req;
 
     @PostMapping("save")
-    public ResponseEntity save(@RequestBody Product product) {        
+    public ResponseEntity save(@RequestBody ModelProduct product) {        
         return productService.save(product);
     }
 
